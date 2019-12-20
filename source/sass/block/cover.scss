@@ -1,0 +1,28 @@
+.cover {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cover a {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.cover img {
+  width: 100%;
+}
+
+@media (min-width: $tablet-width) {
+  .cover a {
+    width: 300px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .cover a {
+    width: 400px;
+  } 
+}
