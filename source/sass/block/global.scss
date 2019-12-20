@@ -1,25 +1,24 @@
-@font-face {
-    font-family: 'Roboto'; 
-    src: url('../fonts/roboto-light.woff2') format('woff2'),
-    url('../fonts/roboto-light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-}
+// 'aestetikazimir'
 
 @font-face {
-  font-family: 'Roboto'; 
-  src: url('../fonts/roboto-medium.woff2') format('woff2'),
-  url('../fonts/roboto-medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Roboto'; 
-  src: url('../fonts/roboto-bold.woff2') format('woff2'),
-  url('../fonts/roboto-bold.woff') format('woff');
+  font-family: 'aestetikazimir';
+  src: url('../fonts/aestetikazimir-bold.woff') format('woff');
   font-weight: 700;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: 'aestetikazimir';
+  src: url('../fonts/aestetikazimir-normal.woff') format('woff');
+  font-weight: 400;
   font-style: normal;
+}
+
+@font-face {
+  font-family: 'aestetikazimir';
+  src: url('../fonts/aestetikazimir-medium.woff') format('woff');
+  font-weight: 500;
+  font-style: medium;
 }
 
 html, body {
