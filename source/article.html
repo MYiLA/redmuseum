@@ -19,11 +19,42 @@
 
 <body>
   <header>
-
+    <nav class="main-nav main-nav--close">
+      <a href="blog.html">
+        <h1>центр экспериментальной музеологии</h1>
+      </a>
+      <button type="button" aria-label="показать или закрыть меню"></button>
+      <ul>
+        <li>
+          <a href="blog.html">
+            блог blog
+          </a>
+        </li>
+        <li>
+          <a href="grants.html">
+            гранты grants
+          </a>
+        </li>
+        <li>
+          <a href="projects.html">
+            проекты
+            projects
+          </a>
+        </li>
+        <li>
+          <a href="about.html">
+            о нас
+            about
+          </a>
+        </li>
+      </ul>
+      <label for="search" aria-label="Поиск">Найти</label>
+      <input type="search" id="search">
+    </nav>
   </header>
 
   <main>
-    <section>
+    <section class="article">
       <time datetime="2019-12-02">02.12.2019</time>
       <div class="preview">
         <h1>
@@ -120,18 +151,22 @@
       <p>
         <em>Публикуется с сохранением орфографии.</em>
       </p>
-      <ul>
-        <li>
+    </section>
+
+    <div class="share">
+      <hr>
+      <ul class="share__list">
+        <li class="share__item share__item--fb">
           <a href="#"><img src="img/icon-fb.svg" alt="Поделиться в фейсбуке"><span>1</span></a>
         </li>
-        <li>
-          <a href="#"><img src="img/icon-vc.svg" alt="Поделиться вконтакте"><span>2</span></a>
+        <li class="share__item share__item--vk">
+          <a href="#"><img src="img/icon-vk.svg" alt="Поделиться вконтакте"><span>2</span></a>
         </li>
-        <li>
+        <li class="share__item share__item--twitter">
           <a href="#"><img src="img/icon-twitter.svg" alt="Поделиться в твиттере"><span>3</span></a>
         </li>
       </ul>
-    </section>
+    </div>
   </main>
 
   <footer>
