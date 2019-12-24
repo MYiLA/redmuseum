@@ -1,10 +1,193 @@
-// .main-nav {}
-// .main-nav--close {}
-// .main-nav__logo {}
-// .main-nav__btn-close {}
-// .main-nav__list {}
-// .main-nav__item {}
-// .main-nav__link {}
+.main-nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &--close {
+    .main-nav__wrap {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .main-nav__menu-btn {
+      &::before {
+        animation: btn-close-before 0.4s forwards;
+      }
+
+      &::after {
+        animation: btn-close-after 0.4s forwards;
+      }
+    }
+  }
+
+  &--open {
+    .main-nav__wrap {
+      display: flex;
+      pointer-events: auto;
+    }
+
+    .main-nav__menu-btn {
+      &::before {
+        animation: btn-open-before 0.4s forwards;
+      }
+
+      &::after {
+        animation: btn-open-after 0.4s forwards;
+      }
+    }
+
+    .main-nav__logo {
+      &::before {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.main-nav__menu-btn {
+  height: 36px;
+  width: 36px;
+  position: relative;
+  background-color: transparent;
+  border: none;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: $black;
+    height: 2px;
+  }
+
+  &::before {
+    width: 36px;
+    right: 0;
+    top: 0;
+    transform: none;
+  }
+
+  &::after {
+    width: 36px;
+    top: 100%;
+    right: 0;
+    box-shadow: 0 -18px 0 $black;
+    transform: none;
+  }
+}
+
+.main-nav__logo {
+  position: relative;
+  width: 250px;
+  padding-bottom: 5px;
+  margin-top: -6px;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 13px;
+  background-color: $white;
+  text-align: left;
+  cursor: pointer;
+
+  &::before {
+    @include black-line;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    transition: 0.4s;
+  }
+
+  h1 {
+    width: 180px;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.main-nav__wrap {
+  width: 300px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: $white;
+  transition: 0.4s;
+}
+
+.main-nav__list {
+  width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+}
+
+.main-nav__form {
+  width: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  & label {
+    height: 24px;
+    text-align: center;
+
+    & img {
+      height: 100%;
+    }
+  }
+
+  & input {
+    position: relative;
+    // top: -2px;
+    // left: 0;
+    width: 250px;
+    height: 39px;
+    border: none;
+    border-bottom: 2px solid $black;
+    @include text-nav;
+    padding-top: 16px;
+    padding-right: 25px;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+    }
+  }
+}
+
+.main-nav__item {
+  position: relative;
+  width: 122px;
+  background-color: $white;
+  padding: 0;
+  margin: 0;
+  padding-top: 10px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    width: 122px;
+    height: 2px;
+    background-color: $black;
+  }
+}
+
+.main-nav__link {
+  width: 55px;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  color: $black;
+}
+
 // @media (min-width: $tablet-width) {
 
 // }
@@ -12,3 +195,73 @@
 // @media (min-width: $desktop-width) {
 
 // }
+
+///////////////////// Animation ///////////////////////
+
+@keyframes btn-open-before {
+  0% {
+    right: 0;
+    width: 36px;
+    top: 0;
+    transform: none;
+  }
+
+  100% {
+    right: -5px;
+    width: 50px;
+    top: 50%;
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes btn-open-after {
+  0% {
+    right: 0;
+    width: 36px;
+    top: 100%;
+    transform: none;
+    box-shadow: 0 -18px 0 $black;
+  }
+
+  100% {
+    right: -5px;
+    width: 50px;
+    top: 50%;
+    transform: rotate(45deg);
+    box-shadow: 0 0 0 $black;
+  }
+}
+
+@keyframes btn-close-before {
+  0% {
+    right: -5px;
+    width: 50px;
+    top: 50%;
+    transform: rotate(-45deg);
+  }
+
+  100% {
+    right: 0;
+    width: 36px;
+    top: 0;
+    transform: none;
+  }
+}
+
+@keyframes btn-close-after {
+  0% {
+    right: -5px;
+    width: 50px;
+    top: 50%;
+    transform: rotate(45deg);
+    box-shadow: 0 0 0 $black;
+  }
+
+  100% {
+    right: 0;
+    width: 36px;
+    top: 100%;
+    transform: none;
+    box-shadow: 0 -18px 0 $black;
+  }
+}

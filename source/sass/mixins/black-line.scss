@@ -1,0 +1,6 @@
+@mixin black-line {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background-color: $black;
+}
