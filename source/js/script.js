@@ -2,24 +2,37 @@
 
 var menuBtnElement = document.querySelector('.main-nav__menu-btn');
 var mainNavElement = document.querySelector('.main-nav');
+var searchFormElement = mainNavElement.querySelector('.main-nav__form');
+var searchBtnElement = searchFormElement.querySelector('label');
+
 
 /// открыть/закрыть меню //////
-var openMainMenu = function () {
-  mainNavElement.classList.remove('main-nav--close');
-  mainNavElement.classList.add('main-nav--open');
+var openElement = function (element, classElement) {
+  element.classList.remove(classElement + '--close');
+  element.classList.add(classElement + '--open');
 };
 
-var closeMainMenu = function () {
-  mainNavElement.classList.remove('main-nav--open');
-  mainNavElement.classList.add('main-nav--close');
+var closeElement = function (element, classElement) {
+  element.classList.remove(classElement + '--open');
+  element.classList.add(classElement + '--close');
 };
 
-var moveMenu = function () {
-  if (mainNavElement.classList.contains('main-nav--close')) {
-    openMainMenu()
+var closeOpenElement = function (element, classElement) {
+  if (element.classList.contains(classElement + '--close')) {
+    openElement(element, classElement)
   } else {
-    closeMainMenu()
+    closeElement(element, classElement)
   };
 };
 
-menuBtnElement.addEventListener('click', moveMenu);
+var onMenuOpenClose = function () {
+  closeOpenElement(mainNavElement, 'main-nav');
+}
+
+menuBtnElement.addEventListener('click', onMenuOpenClose);
+
+var onSearchOpenClose = function () {
+  closeOpenElement(searchFormElement, 'main-nav__form');
+}
+
+searchBtnElement.addEventListener('click', onSearchOpenClose);

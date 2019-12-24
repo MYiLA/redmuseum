@@ -6,6 +6,7 @@
 
   &--close {
     .main-nav__wrap {
+      display: flex;
       opacity: 0;
       pointer-events: none;
     }
@@ -107,8 +108,11 @@
   width: 300px;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: $white;
   transition: 0.4s;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background-color: $white;
 }
 
 .main-nav__list {
@@ -119,7 +123,7 @@
   padding: 0;
   margin: 0;
   list-style: none;
-
+  background-color: $white;
 }
 
 .main-nav__form {
@@ -127,10 +131,24 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  margin-bottom: 3px;
 
   & label {
+    padding-bottom: 1px;
     height: 24px;
     text-align: center;
+    cursor: pointer;
+    opacity: 1;
+    border-bottom: 2px solid $black;
+
+    &:hover, 
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
 
     & img {
       height: 100%;
@@ -138,9 +156,9 @@
   }
 
   & input {
-    position: relative;
-    // top: -2px;
-    // left: 0;
+    position: absolute;
+    top: -37px;
+    left: 0;
     width: 250px;
     height: 39px;
     border: none;
@@ -148,14 +166,35 @@
     @include text-nav;
     padding-top: 16px;
     padding-right: 25px;
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 50px;
-      height: 50px;
-      background-color: red;
+    transition: 0.4s;
+    opacity: 1;
+    pointer-events: auto;
+    outline: none;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -18px;
+    left: 230px;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/icon-enter.svg);
+    background-repeat: no-repeat;
+    background-position: 0;
+    z-index: 1;
+    transition: 0.4s;
+    opacity: 1;
+  }
+
+  &--close {
+    & input {
+      pointer-events: none;
+      opacity: 0;
+    }
+  
+    &::before {
+      opacity: 0;
     }
   }
 }
@@ -177,6 +216,15 @@
     height: 2px;
     background-color: $black;
   }
+
+  &:hover, 
+    &:focus {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
 }
 
 .main-nav__link {
@@ -188,13 +236,56 @@
   color: $black;
 }
 
-// @media (min-width: $tablet-width) {
+@media (min-width: $desktop-width) {
 
-// }
+  .main-nav {
+    flex-direction: row;
+    &--close {
+      .main-nav__wrap {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
 
-// @media (min-width: $desktop-width) {
+  .main-nav__menu-btn {
+    display: none;
+  }
 
-// }
+  .main-nav__logo {
+    margin-top: -2px;
+    margin-bottom: 3px;
+  }
+  
+  .main-nav__wrap {
+    width: 505px;
+    position: static;
+  }
+  
+  .main-nav__list {
+    width: 430px;
+  }
+  
+  .main-nav__form {
+
+    & input {
+      top: 2px;
+      height: 40px;
+    }
+  
+    &::before {
+      top: 22px;
+    }
+  }
+  
+  .main-nav__item {
+    width: 80px;
+
+    &::after {
+      width: 108px;
+    }
+  }
+}
 
 ///////////////////// Animation ///////////////////////
 

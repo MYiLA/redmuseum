@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>redmuseum.church</title>
+  <title>Church of the Red Museum</title>
   <meta name="keywords" content="центр, музей, блог, музеология, эксперимент, инновация, выставка" />
   <meta name="description" content="Развитие и поддержка инновативных проектов, 
   обращенных к экспериментам с формой художественных институций, 
@@ -20,36 +20,43 @@
 <body>
   <header>
     <nav class="main-nav main-nav--close">
-      <a href="blog.html">
+      <a class="main-nav__logo" href="blog.html">
         <h1>центр экспериментальной музеологии</h1>
       </a>
-      <button type="button" aria-label="показать или закрыть меню"></button>
-      <ul>
-        <li>
-          <a href="blog.html">
-            блог blog
-          </a>
-        </li>
-        <li>
-          <a href="grants.html">
-            гранты grants
-          </a>
-        </li>
-        <li>
-          <a href="projects.html">
-            проекты
-            projects
-          </a>
-        </li>
-        <li>
-          <a href="about.html">
-            о нас
-            about
-          </a>
-        </li>
-      </ul>
-      <label for="search" aria-label="Поиск">Найти</label>
-      <input type="search" id="search">
+      <button class="main-nav__menu-btn" type="button" aria-label="показать или закрыть меню"></button>
+      <div class="main-nav__wrap">
+        <ul class="main-nav__list">
+          <li class="main-nav__item">
+            <a class="main-nav__link" href="blog.html">
+              блог blog
+            </a>
+          </li>
+          <li class="main-nav__item">
+            <a class="main-nav__link" href="grants.html">
+              гранты grants
+            </a>
+          </li>
+          <li class="main-nav__item">
+            <a class="main-nav__link" href="projects.html">
+              проекты
+              projects
+            </a>
+          </li>
+          <li class="main-nav__item">
+            <a class="main-nav__link" href="about.html">
+              о нас
+              about
+            </a>
+          </li>
+        </ul>
+        <form class="main-nav__form main-nav__form--close" method="POST">
+          <label for="search" aria-label="Поиск">
+            <img src="img/icon-search.svg" alt="Найти">
+          </label>
+          <input type="text" id="search" placeholder="Custom Search">
+          <div></div>
+        </form>
+      </div>
     </nav>
   </header>
 
