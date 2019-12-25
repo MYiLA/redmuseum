@@ -54,6 +54,19 @@ a {
   @include text;
 }
 
+hr {
+  max-width: 165px;
+  height: 3px;
+  background-color: $black;
+  border: none;
+  margin: 0;
+  margin-bottom: 20px;
+
+  @media (min-width: $tablet-width) {
+    max-width: 250px;
+  }
+}
+
 *,
 *::before,
 *::after {

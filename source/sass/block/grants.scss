@@ -1,6 +1,13 @@
-// .grants {}
+.grants {
+  padding-top: 50px;
+}
 
-// .grants__page {}
+.grants__page.page {
+& h2 {
+  margin-bottom: 60px;
+}
+
+}
 // @media (min-width: $tablet-width) {
 
 // }
