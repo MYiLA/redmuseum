@@ -5,7 +5,6 @@ var mainNavElement = document.querySelector('.main-nav');
 var searchFormElement = mainNavElement.querySelector('.main-nav__form');
 var searchBtnElement = searchFormElement.querySelector('label');
 
-
 /// открыть/закрыть меню //////
 var openElement = function (element, classElement) {
   element.classList.remove(classElement + '--close');

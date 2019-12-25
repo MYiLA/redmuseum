@@ -11,15 +11,6 @@
   margin: 0 auto;
   transition: 0.4s;
   cursor: pointer;
-
-  &:hover,
-  &:focus {
-    opacity: 0.6;
-  }
-
-  &:active {
-    opacity: 0.3;
-  }
 }
 
 .cover img {
@@ -35,5 +26,15 @@
 @media (min-width: $desktop-width) {
   .cover a {
     width: 400px;
-  } 
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
