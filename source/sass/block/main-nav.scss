@@ -3,7 +3,6 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-bottom: 5px;
 
   &--close {
     .main-nav__wrap {
@@ -47,12 +46,14 @@
   }
 }
 
+
 .main-nav__menu-btn {
   height: 36px;
   width: 36px;
   position: relative;
   background-color: transparent;
   border: none;
+  outline:none;
 
   &::before,
   &::after {

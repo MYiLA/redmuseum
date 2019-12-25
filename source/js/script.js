@@ -35,3 +35,26 @@ var onSearchOpenClose = function () {
 }
 
 searchBtnElement.addEventListener('click', onSearchOpenClose);
+
+//// липкая шапка //////
+
+$(window).scroll(function () {
+  if ($(this).scrollTop() > 1) {
+    $('header').addClass('fixed');
+    $('header').removeClass('static');
+  
+  } else {
+    $('header').addClass('static');
+    $('header').removeClass('fixed');
+  }
+});
+
+// $(window).scroll(function () {
+//   if ($(window).scrollTop() + $(window).height() > $(document).height() - 0) {
+//     $('.main-nav').addClass('static');
+//     $('.main-nav').removeClass('fixed');
+//   } else {
+//     $('.main-nav').addClass('fixed');
+//     $('.main-nav').removeClass('static');
+//   }
+// });
