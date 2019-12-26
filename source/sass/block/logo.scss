@@ -1,11 +1,28 @@
+.logo {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-// .logo {
+.logo__link {
+  width: 100%;
+  transition: 0.4s;
 
-// }
+  & img {
+    width: 100%;
+  }
 
-// .logo__link {
+  &:hover,
+  &:focus {
+    opacity: 0.6;
+  }
 
-// }
+  &:active {
+    opacity: 0.3;
+  }
+}
 
 // @media (min-width: $tablet-width) {
 

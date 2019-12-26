@@ -1,29 +1,132 @@
-// .article {
-//   & h1 {}
-//   & h2 {}
-//   & p {}
-//   & a {}
-//   & b {}
-//   & strong {}
-//   & em {}
+.article {
+  padding-top: 100px;
 
-//   & ul {}
-//   & li {}
-  
-//   & figure {}
-//   & figure img {}
-//   & figcaption {}
+  // & h1 {}
+  & h2 {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 35px;
+    font-size: 40px;
+    line-height: 30px;
+    font-weight: 700;
 
-//   & time {}
-//   & cite {}
+    & a {
+      font-size: 40px;
+      line-height: 30px;
+      font-weight: 700;
+    }
+  }
 
-//   & hr {}
-// }
+  // p {
+  //   margin: 0;
+  //   padding: 0;
+  //   padding-bottom: 15px;
+  //   padding-top: 15px;
+  // }
+
+  // & a {}
+  // & b {}
+  // & strong {}
+  & em {
+    font-weight: 500;
+  }
+
+  // & ul {}
+  // & li {}
+
+  & figure {
+    width: 100%;
+    padding: 0;
+    padding-top: 20px;
+    margin: 0;
+    margin-bottom: 35px;
+  }
+
+  & figure img {
+    width: 100%;
+  }
+
+  & figcaption {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  & time {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 700;
+    color: $black;
+  }
+
+  & cite {
+    font-weight: 500;
+  }
+
+  & hr {
+    display: block;
+    margin: 0;
+  }
+}
+
+.article__preview {
+  margin-bottom: 50px;
+}
+
+.article__important {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 // @media (min-width: $tablet-width) {
 
 // }
 
-// @media (min-width: $desktop-width) {
+@media (min-width: $desktop-width) {
+  .article {
+    padding-top: 40px;
+    & figure img {
+      width: 100%;
+    }
 
-// }
+    & p {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-left: 110px;
+    }
+
+    & hr+p {
+      padding-top: 30px;
+    }
+
+    & p+hr {
+      display: block;
+      margin-top: 35px;
+    }
+  
+    & figure img {
+      width: 620px;
+    }
+  
+    & figcaption {
+      margin-left: 110px;
+    }
+
+  }
+
+  .article__important {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    & strong {
+      font-size: 40px;
+      line-height: 30px;
+    }
+  }
+
+  .article__preview p {
+    margin-left: 0;
+  }
+
+}

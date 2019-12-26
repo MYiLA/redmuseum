@@ -30,10 +30,12 @@ body {
 
 header,
 main,
-footer {
+footer,
+header.static {
   padding-top: 12px;
   padding-left: 10px;
   padding-right: 10px;
+  background-color: $white;
 
   @media (min-width: $tablet-width) {
     padding-top: 20px;
@@ -49,17 +51,16 @@ footer {
   }
 }
 
-header.static {
-  width: 100%;
-}
-
 header.fixed {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
   width: 100%;
-  background-color: $white;
+  @media (min-width: $desktop-width) {
+    width: 760px;
+  }
 }
 
 a {
