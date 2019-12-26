@@ -40,12 +40,12 @@ searchBtnElement.addEventListener('click', onSearchOpenClose);
 
 $(window).scroll(function () {
   if ($(this).scrollTop() > 1) {
-    $('header').addClass('fixed');
-    $('header').removeClass('static');
+    $('.header__wrap').addClass('fixed');
+    $('.header__wrap').removeClass('static');
   
   } else {
-    $('header').addClass('static');
-    $('header').removeClass('fixed');
+    $('.header__wrap').addClass('static');
+    $('.header__wrap').removeClass('fixed');
   }
 });
 
