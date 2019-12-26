@@ -26,6 +26,8 @@
     .main-nav__wrap {
       display: flex;
       pointer-events: auto;
+      background-color: $white;
+      z-index: 1;
     }
 
     .main-nav__menu-btn {
@@ -52,7 +54,7 @@
   position: relative;
   background-color: transparent;
   border: none;
-  outline:none;
+  outline: none;
 
   &::before,
   &::after {
@@ -143,7 +145,7 @@
     border-bottom: 2px solid $black;
     transition: 0.4s;
 
-    &:hover, 
+    &:hover,
     &:focus {
       opacity: 0.6;
     }
@@ -195,7 +197,7 @@
       pointer-events: none;
       opacity: 0;
     }
-  
+
     &::before {
       opacity: 0;
     }
@@ -212,14 +214,14 @@
   z-index: 1;
   border-bottom: 2px solid $black;
 
-  &:hover, 
-    &:focus {
-      opacity: 0.6;
-    }
+  &:hover,
+  &:focus {
+    opacity: 0.6;
+  }
 
-    &:active {
-      opacity: 0.3;
-    }
+  &:active {
+    opacity: 0.3;
+  }
 }
 
 .main-nav__link {
@@ -238,6 +240,7 @@
 
   .main-nav {
     flex-direction: row;
+
     &--close {
       .main-nav__wrap {
         opacity: 1;
@@ -252,33 +255,43 @@
 
   .main-nav__logo {
     margin-top: -2px;
-   
+    max-height: 47px;
+
     &::before {
       opacity: 1;
     }
   }
-  
+
   .main-nav__wrap {
     width: 505px;
     position: static;
   }
-  
+
   .main-nav__list {
     width: 464px;
+    justify-content: flex-start;
   }
-  
+
+  .main-nav__item {
+    margin-right: 5px;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+
   .main-nav__form {
 
     & input {
       top: 2px;
       height: 43px;
     }
-  
+
     &::before {
       top: 22px;
     }
   }
-  
+
   .main-nav__item {
     width: 112px;
 
