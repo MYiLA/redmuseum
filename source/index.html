@@ -27,14 +27,20 @@
   </div>
   <!-- ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ НАЧАТ  //////////////////////////////////////////// -->
 
-  <!-- <div id="app">
+  <div id="app">
     <input type="text" v-on:input="changeName">
       <h1>String: {{ name }}</h1>
       <h1>Sum: {{ number }}</h1>
       <h1>Method: {{ sayHello() }}</h1>
       <h1>If statement: {{ isOk ? 'I am Ok':'I am not Ok' }}</h1>
       <h1>function: {{ string.split('').reverse().join('') }}</h1>
-  </div> -->
+      <h2>
+        <a v-bind:href="url">Google</a>
+      </h2>
+      <h2 v-html="link">
+        
+      </h2>
+  </div>
 
 <!-- //////////////////////////////////////////   ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ ОКОНЧЕН -->
 
@@ -44,7 +50,7 @@
 
 <!-- ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ НАЧАТ  //////////////////////////////////////////// -->
 
-  <!-- <script>
+  <script>
 new Vue({
   el:"#app",
   data: {
@@ -52,6 +58,8 @@ new Vue({
     number: 100,
     isOk: true,
     string: 'My name is Vlad',
+    url: 'http://google.com',
+    link: '<a href="http://google.com">Google html</a>',
   },
   methods: {
     changeName: function() {
@@ -62,7 +70,7 @@ new Vue({
     }
   }
 })
-  </script> -->
+  </script>
 
 <!-- //////////////////////////////////////////   ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ ОКОНЧЕН -->
 
