@@ -1,9 +1,7 @@
 // .about {
 
 // }
-// .about__wrap {
 
-// }
 // .about__logo {
 
 // }
@@ -16,6 +14,21 @@
 
 // }
 
-// @media (min-width: $desktop-width) {
+@media (min-width: $desktop-width) {
+  .about {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .about__wrap {
+    width: 48%;
+  }
 
-// }
+  .page.about__wrap {
+
+    & p {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+}

@@ -24,9 +24,17 @@
   }
 }
 
-// @media (min-width: $tablet-width) {
+@media (min-width: $tablet-width) {
 
-// }
+  .logo {
+    width: 100%;
+    align-items: center;
+  }
+
+  .logo__link {
+    width: 460px;
+  }
+}
 
 // @media (min-width: $desktop-width) {
 
