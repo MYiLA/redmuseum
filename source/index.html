@@ -38,8 +38,14 @@
         <a v-bind:href="url">Google</a>
       </h2>
       <h2 v-html="link">
-        
       </h2>
+      <button v-on:click="counterRize(-1, 'уровень понижен', $event)">Уменьшить</button>
+      <h3 v-on:mouseover="onHover">{{title}} = {{counter}}</h3>
+      <button v-on:click="counterRize(1, 'уровень увеличен', $event)">Увеличить</button>
+      <hr>
+      <button v-on:click="counter2--">Уменьшить</button>
+      <h3>Счетчик = {{counter2}}</h3>
+      <button v-on:click="counter2++">Увеличить</button>
   </div>
 
 <!-- //////////////////////////////////////////   ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ ОКОНЧЕН -->
@@ -60,6 +66,9 @@ new Vue({
     string: 'My name is Vlad',
     url: 'http://google.com',
     link: '<a href="http://google.com">Google html</a>',
+    counter: 0,
+    counter2: 0,
+    title: 'Счетчик',
   },
   methods: {
     changeName: function() {
@@ -67,7 +76,19 @@ new Vue({
     },
     sayHello: function() {
       return "I am function"
-    }
+    },
+    counterRize: function (a, str, event) {
+      this.counter+= a;
+      this.title = str;
+      if (a === 1) {
+        event.target.style.backgroundColor = "green";
+      } else if (a === -1) {
+        event.target.style.backgroundColor = "red";
+      };
+    },
+    onHover: function(event){
+event.target.style.color = "red"
+    },
   }
 })
   </script>
