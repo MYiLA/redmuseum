@@ -6,14 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Church of the Red Museum</title>
-  <meta name="keywords" 
-  content="центр, музей, блог, музеология, эксперимент, инновация, выставка"/>
-  <meta name="description" 
-  content="Развитие и поддержка инновативных проектов, 
+  <meta name="keywords" content="центр, музей, блог, музеология, эксперимент, инновация, выставка" />
+  <meta name="description" content="Развитие и поддержка инновативных проектов, 
   обращенных к экспериментам с формой художественных институций, 
-  а также к выставке и музею как особым медиа."/>
+  а также к выставке и музею как особым медиа." />
   <meta name="subject" content="Блог экспериментальной музеологии">
-  <meta name="copyright"content="Фонд V–A–C">
+  <meta name="copyright" content="Фонд V–A–C">
   <meta name="language" content="RU">
   <!-- <link rel="preload" href="fonts/roboto-medium.woff2" as="font" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="css/style.min.css">
@@ -25,75 +23,147 @@
       <img src="img/logo-cem.svg" alt="Логотип 'ЦЭМ' (центр экспериментальной музеологии)">
     </a>
   </div>
+
+
   <!-- ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ НАЧАТ  //////////////////////////////////////////// -->
+  <style>
+    .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 1px solid black;
+      display: inline-block;
+      margin: 40px;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .green {
+      background-color: green;
+    }
+  </style>
+
+
 
   <div id="app">
     <input type="text" v-on:input="changeName">
-      <h1>String: {{ name }}</h1>
-      <h1>Sum: {{ number }}</h1>
-      <h1>Method: {{ sayHello() }}</h1>
-      <h1>If statement: {{ isOk ? 'I am Ok':'I am not Ok' }}</h1>
-      <h1>function: {{ string.split('').reverse().join('') }}</h1>
-      <h2>
-        <a v-bind:href="url">Google</a>
-      </h2>
-      <h2 v-html="link">
-      </h2>
-      <button v-on:click="counterRize(-1, 'уровень понижен', $event)">Уменьшить</button>
-      <h3 v-on:mouseover="onHover">{{title}} = {{counter}}</h3>
-      <button v-on:click="counterRize(1, 'уровень увеличен', $event)">Увеличить</button>
-      <hr>
-      <button v-on:click="counter2--">Уменьшить</button>
-      <h3>Счетчик = {{counter2}}</h3>
-      <button v-on:click="counter2++">Увеличить</button>
+    <h1>String: {{ name }}</h1>
+    <h1>Sum: {{ number }}</h1>
+    <h1>Method: {{ sayHello() }}</h1>
+    <h1>If statement: {{ isOk ? 'I am Ok':'I am not Ok' }}</h1>
+    <h1>function: {{ string.split('').reverse().join('') }}</h1>
+    <h2>
+      <a :href="url">Google</a>
+    </h2>
+    <h2 v-html="link">
+    </h2>
+    <button @click="counterRize(-1, 'уровень понижен', $event)">Уменьшить</button>
+    <h3 @mouseover="onHover">{{title}} = {{counter}}</h3>
+    <button @click="counterRize(1, 'уровень увеличен', $event)">Увеличить</button>
+    <hr>
+    <button v-on:click="counter2--">Уменьшить</button>
+    <h3>Счетчик = {{counter2}}</h3>
+    <button v-on:click="counter2++">Увеличить</button>
+    <h2>
+      <a :href="url" target="_blank" @click.prevent="">Google</a>
+    </h2>
+    <h2 v-on:mousemove="handleMouseMove">
+      X: {{x}} \ Y:{{y}}
+      <span v-on:mousemove.stop="">Не изменять</span>
+    </h2>
+    <hr>
+    <input type="text" v-on:keyup.enter="alertValue">
+    <div>
+      <input type="text" @input="inputValue = $event.target.value" :value="inputValue">
+      <h2>{{inputValue}}</h2>
+    </div>
+    <div class="circle" @click="isActive = !isActive" :class="getCssClasses">
+    </div>
+    <div class="circle" :class="[color, {'red': isActive}]"></div>
+    <input type="text" v-model="color">
   </div>
 
-<!-- //////////////////////////////////////////   ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ ОКОНЧЕН -->
+  <!-- //////////////////////////////////////////   ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ ОКОНЧЕН -->
 
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="js/cover.js"></script>
 
-<!-- ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ НАЧАТ  //////////////////////////////////////////// -->
+  <!-- ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ НАЧАТ  //////////////////////////////////////////// -->
 
   <script>
-new Vue({
-  el:"#app",
-  data: {
-    name: 'Vue!',
-    number: 100,
-    isOk: true,
-    string: 'My name is Vlad',
-    url: 'http://google.com',
-    link: '<a href="http://google.com">Google html</a>',
-    counter: 0,
-    counter2: 0,
-    title: 'Счетчик',
-  },
-  methods: {
-    changeName: function() {
-      this.name = event.target.value
-    },
-    sayHello: function() {
-      return "I am function"
-    },
-    counterRize: function (a, str, event) {
-      this.counter+= a;
-      this.title = str;
-      if (a === 1) {
-        event.target.style.backgroundColor = "green";
-      } else if (a === -1) {
-        event.target.style.backgroundColor = "red";
-      };
-    },
-    onHover: function(event){
-event.target.style.color = "red"
-    },
-  }
-})
+    new Vue({
+      el: "#app",
+      data: {
+        inputValue: 'Hello Vue',
+        name: 'Vue!',
+        number: 100,
+        isOk: true,
+        string: 'My name is Vlad',
+        url: 'http://google.com',
+        link: '<a href="http://google.com">Google html</a>',
+        counter: 0,
+        counter2: 0,
+        title: 'Счетчик',
+        x: 0,
+        y: 0,
+        isActive: false,
+        color: 'blue',
+        // enter: 13,
+      },
+
+      computed: {
+          getCssClasses: function () {
+            return {
+              'red': this.isActive,
+              'blue': !this.isActive,
+            }
+          }
+        },
+
+      methods: {
+        changeName: function () {
+          this.name = event.target.value
+        },
+        sayHello: function () {
+          return "I am function"
+        },
+        counterRize: function (a, str, event) {
+          this.counter += a;
+          this.title = str;
+          if (a === 1) {
+            event.target.style.backgroundColor = "green";
+          } else if (a === -1) {
+            event.target.style.backgroundColor = "red";
+          };
+        },
+        onHover: function (event) {
+          event.target.style.color = "red"
+        },
+        // clickOnGoogle: function (event) {
+        //   event.preventDefault()
+        // },
+        handleMouseMove: function (event) {
+          this.x = event.clientX
+          this.y = event.clientY
+        },
+        alertValue: function (event) {
+          // if (event.keyCode === this.enter) {
+          alert(event.target.value)
+          // }
+
+        },
+      }
+    })
   </script>
 
-<!-- //////////////////////////////////////////   ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ ОКОНЧЕН -->
+  <!-- //////////////////////////////////////////   ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ ОКОНЧЕН -->
 
 </body>
 
