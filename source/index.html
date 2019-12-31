@@ -119,9 +119,29 @@
     <hr>
     <button @click="isVisible = !isVisible"> Toggle </button>
     <!--16. Работа со списками -->
+    <hr>
+    <ul>
+      <li v-for="(person, index) in people">{{index + 1}} {{person.name}} <b>{{person.age}}</b></li>
+      <li v-for="(person, index) of people">{{index + 1}} {{person.name}} <b>{{person.age}}</b></li>
+    </ul>
+    <ol>
+      <li v-for="num of 3"> {{num}} </li>
+    </ol>
+    <hr>
+    <ul>
+      <li v-for="(value, key, index) in person"> <strong>{{index + 1}}</strong> <a href="#"> {{key}}: </a> {{value}}
+      </li>
+    </ul>
+    <!--17. Оптимизация приложения с computed -->
+    <h2>Counter {{counter}}</h2>
+    <h3>{{result}}</h3>
+    <button @click="add">Add</button>
+    <button @click="sub">Sub</button>
+    <!--18. Отслеживание изменений с watch -->
+
+
+
     
-
-
   </div>
 
 
@@ -157,10 +177,37 @@
         height: '100',
         isVisible: true,
         type: 'a',
+        people: [{
+            name: 'Vlad',
+            age: 20
+          },
+          {
+            name: 'Max',
+            age: 25
+          },
+          {
+            name: 'Elena',
+            age: 30
+          },
+          {
+            name: 'Milana',
+            age: 10
+          },
+        ],
+        person: {
+          name: 'Mary',
+          age: '25',
+          job: 'Architect',
+        },
+
         // enter: 13,
       },
-
+      // не вызывать функцию без надобности (функция без скобок на слушателе),
+      // они должны возвращать строку(приводимое к строке)
       computed: {
+        result: function () {
+          return this.counter > 3 ? 'More than 3' : 'Less than 3'
+        },
         getCssClasses: function () {
           return {
             'red': this.isActive,
@@ -177,6 +224,12 @@
       },
 
       methods: {
+        add: function () {
+          this.counter++
+        },
+        sub: function () {
+          this.counter--
+        },
         changeName: function () {
           this.name = event.target.value
         },
