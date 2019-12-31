@@ -73,6 +73,8 @@
     <h2>
       <a :href="url" target="_blank" @click.prevent="">Google</a>
     </h2>
+
+    <!-- Отслеживание координат мыши пользователя -->
     <h2 v-on:mousemove="handleMouseMove">
       X: {{x}} \ Y:{{y}}
       <span v-on:mousemove.stop="">Не изменять</span>
@@ -87,7 +89,43 @@
     </div>
     <div class="circle" :class="[color, {'red': isActive}]"></div>
     <input type="text" v-model="color">
+    <input type="text" v-model="white">
+    <input type="text" v-model="height">
+    <hr>
+    <h3>13 lesson</h3>
+    <div class="circle" :style="circleClasses">
+      <p>
+        hello i'm colorful
+      </p>
+    </div>
+
+    <!-- следующий элемент массива может затереть предыдущие свойства или добавить новые -->
+    <div class="circle" :style="[circleClasses, {'width': height + 'px'}]"></div>
+    <!--14. Скрывание и показ элементов -->
+    <!-- Этот способ стирает ненужный элемент(можно использовать шаблоны template) -->
+    <hr>
+    <h2 v-if="type  === 'a'">A</h2>
+    <h2 v-else-if="type  === 'b'">B</h2>
+    <h2 v-else-if="type  === 'c'">C</h2>
+    <h2 v-else>not match</h2>
+    <hr>
+    <input type="text" v-model="type">
+
+    <!--15. директива v-show vs v-if -->
+    <!-- скрывает части dom-дерева через свойство display-none -->
+    <hr>
+    <h1 v-show="isVisible">I am visible!</h1>
+    <h2 v-show="!isVisible">You can't see me!</h2>
+    <hr>
+    <button @click="isVisible = !isVisible"> Toggle </button>
+
+
+
+
   </div>
+
+
+
 
   <!-- //////////////////////////////////////////   ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ ОКОНЧЕН -->
 
@@ -115,17 +153,28 @@
         y: 0,
         isActive: false,
         color: 'blue',
+        white: 'rgb(255, 255, 255)',
+        height: '100',
+        isVisible: true,
+        type: 'a',
         // enter: 13,
       },
 
       computed: {
-          getCssClasses: function () {
-            return {
-              'red': this.isActive,
-              'blue': !this.isActive,
-            }
+        getCssClasses: function () {
+          return {
+            'red': this.isActive,
+            'blue': !this.isActive,
           }
         },
+        circleClasses: function () {
+          return {
+            'background': this.color,
+            'color': this.white,
+            'height': this.height + 'px',
+          }
+        }
+      },
 
       methods: {
         changeName: function () {
