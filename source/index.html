@@ -137,12 +137,22 @@
     <h3>{{result}}</h3>
     <button @click="add">Add</button>
     <button @click="sub">Sub</button>
-    <!--18. Отслеживание изменений с watch -->
-
-
-
-    
   </div>
+    <!--19. Связывание разных приложений. Инстанс vue. Для связывания объект 
+      вью нужно записать в переменную, и уже через нее вызывать и менять ее 
+      методы/переменные внутри других вью блоков-->
+<hr>
+<div id="app1">
+    <h2>{{title}}</h2>
+    <button @click="title = 'Updated title'"> Updated title </button>
+</div>
+   <hr>
+<div id="app2">
+  <h2>{{title}}</h2>
+  <button @click="UpdateFirstTitle"> Updated title </button>
+</div>
+<hr>
+  <!-- 20. Доступ к DOM элементам -->
 
 
 
@@ -156,6 +166,25 @@
   <!-- ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ НАЧАТ  //////////////////////////////////////////// -->
 
   <script>
+    var vue1 = new Vue({
+      el:"#app1",
+      data: {
+        title: 'I am title!',
+      },
+    })
+
+    new Vue({
+      el:"#app2",
+      data: {
+        title: 'I am title 2!',
+      },
+      methods: {
+        UpdateFirstTitle: function(){
+          vue1.title = 'I am title vue2'
+        }
+      },
+    })
+
     new Vue({
       el: "#app",
       data: {
@@ -260,7 +289,16 @@
           alert(event.target.value)
           // }
         },
-      }
+      },
+
+      // <!--18. Отслеживание изменений с watch -->
+      // внутрь wath пишут функции отслеживания. ключ этой функции 
+      // должен совпадать с ключем отслеживаемого объекта. val - стандарт
+      watch: {
+        counter: function (val) {
+          console.log("From watch object", val)
+        }
+      },
     })
   </script>
 
