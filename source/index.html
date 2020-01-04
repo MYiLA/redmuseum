@@ -138,23 +138,32 @@
     <button @click="add">Add</button>
     <button @click="sub">Sub</button>
   </div>
-    <!--19. Связывание разных приложений. Инстанс vue. Для связывания объект 
+  <!--19. Связывание разных приложений. Инстанс vue. Для связывания объект 
       вью нужно записать в переменную, и уже через нее вызывать и менять ее 
       методы/переменные внутри других вью блоков-->
-<hr>
-<div id="app1">
+  <hr>
+
+  <hr>
+  <div id="app2">
     <h2>{{title}}</h2>
-    <button @click="title = 'Updated title'"> Updated title </button>
-</div>
-   <hr>
-<div id="app2">
-  <h2>{{title}}</h2>
-  <button @click="UpdateFirstTitle"> Updated title </button>
-</div>
-<hr>
+    <button @click="UpdateFirstTitle"> Updated title </button>
+  </div>
+  <hr>
   <!-- 20. Доступ к DOM элементам -->
 
-
+  <div id="app1">
+    <!-- heading и watermelon это ключи, по которым можно обратиться к DOM-элементам -->
+    <!-- для работы с DOM лучше использовать ref, так как он быстрее работает, чем команда "document.querySelector()" -->
+    <h2 ref="heading">{{title}}</h2>
+    <h2 ref="watermelon">{{title}}</h2>
+    <button @click="UpdateFirstTitle"> Updated title </button>
+    <button @click="doDestroyed"> Destroy title </button>
+    <!-- 21. Свойство template -->
+    <hr>
+    <h2 ref="heading">{{title21}}</h2>
+    <!-- 23. Зачем нужен CLI -->
+  
+  </div>
 
 
   <!-- //////////////////////////////////////////   ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ ОКОНЧЕН -->
@@ -167,25 +176,70 @@
 
   <script>
     var vue1 = new Vue({
-      el:"#app1",
       data: {
         title: 'I am title!',
+        title21: 'Hello I am Vue',
       },
-    })
-
-    new Vue({
-      el:"#app2",
+      // <!-- 22. Жизненный цикл компонента или инстанс вью(экземпляр класса) new vue - это класс вью-->
+      // Отслеживание этапов работы вью
+      beforeCreate: function () {
+        console.log('before Create');
+      },
+      created: function(){
+        console.log('Created');
+      },
+      beforeMount: function(){
+        console.log('Before Mount');
+      },
+      mounted: function(){
+        console.log('Mounted');
+      },
+      // Изменение компонента
+      beforeUpdate: function() {
+        console.log('Before Update');
+      },
+      updated: function() {
+        console.log('Updated');
+      },
+      // Отслеживание удаления компонента
+      beforeDestroy: function(){
+        console.log('Before Destroy');
+      },
+      destroyed: function(){
+        console.log('Destroyed');
+      },
+      methods: {
+        UpdateFirstTitle: function () {
+          this.title = 'I am title UpdateFirstTitle in block app1';
+          // Все системные названия vue js начинаются с символа $
+          console.log(this.$refs);
+          this.$refs.watermelon.style.color = 'green';
+        },
+        doDestroyed: function(){
+          // уничтожает приложение, кнопки перестают работать(измененные элементы сохраняются такими, приложение перестает есть память)
+          this.$destroy();
+        },
+      },
+      // template заменяет все содержимое выбранного блока. необходимо элемент оборачивать в div-обертку-блок
+      // template: '<div>
+      // <h1>{{ title }}</h1>
+      // </div>',
+    });
+    // После создания блока - присваиваем его элементу с id = app
+    vue1.$mount('#app1');
+    var vue2 = new Vue({
+      el: "#app2",
       data: {
         title: 'I am title 2!',
       },
       methods: {
-        UpdateFirstTitle: function(){
-          vue1.title = 'I am title vue2'
+        UpdateFirstTitle: function () {
+          vue1.title = 'I am title UpdateFirstTitle in block app2';
         }
       },
-    })
-
-    new Vue({
+    });
+    vue2.$mount('#app2');
+    var vue = new Vue({
       el: "#app",
       data: {
         inputValue: 'Hello Vue',
@@ -299,7 +353,8 @@
           console.log("From watch object", val)
         }
       },
-    })
+    });
+    vue.$mount('#app');
   </script>
 
   <!-- //////////////////////////////////////////   ЧЕРНОВИК ДЛЯ ОБУЧЕНИЯ ОКОНЧЕН -->
