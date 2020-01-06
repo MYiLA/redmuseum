@@ -3,7 +3,14 @@
 // npm run dev -->
 
   <div id="app">
-    <my-counter></my-counter>
+    <!-- <my-counter></my-counter> -->
+     <!-- $event = получить параметр -->
+    <h1>Parent: {{carName}}</h1>
+    <app-car 
+    :carName="carName" 
+    :carYear="carYear"
+    :changeFunc="changeNameToAudi"
+    @changeName="carName=$event"></app-car>
   </div>
   <!-- // ЧЕРНОВИК НАЧАТ //////////////////////////////// -->
   <!-- <div id="app">
@@ -100,6 +107,9 @@
 </template>
 
 <script>
+// Регистрация компонента локально
+import Car from './Car.vue';
+
   // создание компонента глобально (регистрация до его использования):
   // Vue.component ('кастомный тег', {для темплейт исп обратные кавычки})
   // Vue.component('my-counter', {
@@ -132,11 +142,21 @@
   export default {
     data() {
       return {
-        msg: 'Welcome to Your Vue.js App',
+        carName: 'BMW',
+        carYear: 2020,
         counter: 0,
         counter2: 0,
       };
     },
+    // Регистрация компонента локально
+    components:{
+      appCar: Car,
+      },
+      methods: {
+changeNameToAudi(){
+  this.carName = 'Audi';
+},
+      },
   };
   // var vue = new Vue({
   //   el: "#app",
