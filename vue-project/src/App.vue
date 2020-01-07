@@ -5,12 +5,23 @@
   <div id="app">
     <!-- <my-counter></my-counter> -->
      <!-- $event = получить параметр -->
-    <h1>Parent: {{carName}}</h1>
+    <h1 v-colored>Parent: {{carName}}</h1>
+      <app-counter>
+    </app-counter>
+    
     <app-car 
     :carName="carName" 
     :carYear="carYear"
     :changeFunc="changeNameToAudi"
-    @changeName="carName=$event"></app-car>
+    @changeName="carName=$event"
+    @updateCounter="counter=$event">
+      <h2 slot="title">{{carName}}</h2>
+      <p slot="text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia ut a eum velit. Explicabo quibusdam quia repellendus ab, enim ipsum delectus vitae ratione libero molestias architecto saepe laboriosam? Pariatur, sapiente?
+      Ipsa quidem perferendis eum consequatur nisi, dignissimos dolorum distinctio quibusdam autem cumque. Sint quasi nostrum quas, quam nobis, nulla ratione recusandae libero est, pariatur laboriosam rem? Deserunt aspernatur corporis eos.
+      Commodi distinctio laudantium qui optio rerum corrupti quibusdam esse doloremque dolorem ut eveniet delectus earum repudiandae natus quam ipsum nihil itaque velit, magni magnam asperiores ipsa? Dolorum repellat soluta aliquam.
+      </p>
+    </app-car>
+  
   </div>
   <!-- // ЧЕРНОВИК НАЧАТ //////////////////////////////// -->
   <!-- <div id="app">
@@ -103,12 +114,12 @@
   <!--19. Связывание разных приложений. Инстанс vue. Для связывания объект 
       вью нужно записать в переменную, и уже через нее вызывать и менять ее 
       методы/переменные внутри других вью блоков -->
-
 </template>
 
 <script>
 // Регистрация компонента локально
 import Car from './Car.vue';
+import Counter from './Counter.vue';
 
   // создание компонента глобально (регистрация до его использования):
   // Vue.component ('кастомный тег', {для темплейт исп обратные кавычки})
@@ -144,13 +155,14 @@ import Car from './Car.vue';
       return {
         carName: 'BMW',
         carYear: 2020,
-        counter: 0,
+        // counter: 0,
         counter2: 0,
       };
     },
     // Регистрация компонента локально
     components:{
       appCar: Car,
+      appCounter: Counter,
       },
       methods: {
 changeNameToAudi(){
@@ -277,27 +289,31 @@ changeNameToAudi(){
 
 </script>
 
-<style lang="scss">
-  // ЧЕРНОВИК НАЧАТ ////////////////////////////////
-  .circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 1px solid black;
-    display: inline-block;
-    margin: 40px;
-  }
+<style scoped>
+h2 {
+  color: brown;
+}
 
-  .red {
-    background-color: red;
-  }
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid black;
+  display: inline-block;
+  margin: 40px;
+}
 
-  .blue {
-    background-color: blue;
-  }
+.red {
+  background-color: black;
+  color: red;
+}
 
-  .green {
-    background-color: green;
-  }
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
 
 </style>
