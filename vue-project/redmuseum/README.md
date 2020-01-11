@@ -1,4 +1,4 @@
-# vue-redmuseum
+# redmuseum
 
 > A Vue.js project
 
