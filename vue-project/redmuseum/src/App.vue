@@ -5,7 +5,12 @@
   <div id="app">
     <!-- <my-counter></my-counter> -->
      <!-- $event = получить параметр -->
-    <h1 v-colored>Parent: {{carName}}</h1>
+    <h1 v-colored:background="'red'" v-if="visible">Parent: {{carName}}</h1>
+    <!-- можно добавлять сразу несколько модификаторов в директиве (.font.delay) -->
+    <h1 v-colored:color.font.delay="'green'" v-if="visible">Parent: {{carName}}</h1>
+<!-- проверка жизненного цикла директив -->
+    <!-- <button @click="visible = !visible">Toggle</button>
+    <button @click="carName = 'B-)'">Smail</button> -->
       <app-counter>
     </app-counter>
 
@@ -38,6 +43,7 @@ import Counter from './Counter.vue';
         carYear: 2020,
         // counter: 0,
         counter2: 0,
+        visible: true,
       };
     },
     // Регистрация компонента локально
