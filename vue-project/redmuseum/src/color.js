@@ -24,22 +24,22 @@ export default {
 
   },
   //     //жизненный этап, когда директива уже есть в DOM-дереве
-  //     inserted(el, bindings, vnode){
-  //       console.log('inserted');
-  //     },
+      inserted(el, bindings, vnode){
+        console.log('inserted');
+      },
   // // этап, когда при изменении данных обновился родительский компонент, но дочерние еще не обновились
   // // oldVnode - параметр, в котором хранится старая нода до абдейта директивы
-  //     update(el, bindings, vnode, oldVnode){
-  //       console.log('update');
-  //     },
+      update(el, bindings, vnode, oldVnode){
+        console.log('update');
+      },
   //     //этап сразу вызывается после update, когда уже обновились дочерние элементы
-  //     componentUpdated(el, bindings, vnode, oldVnode){
-  //       console.log('component Updated');
-  //     },
+      componentUpdated(el, bindings, vnode, oldVnode){
+        console.log('component Updated');
+      },
   //     // этап когда директива была удалена из DOM дерева
-  //     unbind(){
-  //       console.log('unbind');
-  //     },
+      unbind(){
+        console.log('unbind');
+      },
 }
 
 // 42. жизненный цикл директивы

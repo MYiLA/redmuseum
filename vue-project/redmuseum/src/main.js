@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
+import List from './List.vue';
 
 // регистрация новой директивы
 import ColorDirective from './color.js';
@@ -8,12 +9,21 @@ import ColorDirective from './color.js';
 // в данном классе мы получаем доступ к событиям emit и on
 // константы определяются в начале приложения
 export const eventEmitter = new Vue();
+// регистрация директивы глобально
 Vue.directive('colored', ColorDirective);
-// регистрация компонента глобально, 
-// лучше добавлять префикс, чтобы они 
+// регистрация фильтра глобально
+Vue.filter('uppercase', value => value.toUpperCase());
+// регистрация компонента глобально,
+// лучше добавлять префикс, чтобы они
 // не пересекались с названиями тегов html5
 // import Car from './Car.vue';
-// Vue.component('app-car', Car);
+Vue.component('app-list', List);
+//регистрация глобального миксина
+Vue.mixin ({
+  beforeCreate(){
+    console.log('beforeCreate');
+  }
+})
 new Vue({
   el: '#app',
   // позволяет рендерить приложение вью
