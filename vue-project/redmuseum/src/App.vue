@@ -39,18 +39,59 @@
     </app-car>
     <input type="text" v-model="searchName">
     <ul>
-      <li v-for="name of filteredNames">{{name}}</li>
+      <li :key="name" v-for="name of filteredNames">{{name}}</li>
     </ul>
-<hr>
-<app-list></app-list>
-<hr>
-  <h2>Form inputs</h2>
-  <input type="text" v-model.lazy="nameA">
-  <p>{{nameA}}</p>
-  <textarea v-model="textarea"></textarea>
-  <p>{{textarea}}</p>
-  </div>
+    <hr>
+    <app-list></app-list>
+    <hr>
+    <h2>Form inputs</h2>
+    <input type="text" v-model.lazy="nameA">
+    <p>{{nameA}}</p>
+    <textarea v-model="textarea"></textarea>
+    <p>{{textarea}}</p>
+    <label>
+      <input type="checkbox" value="Instagram" v-model="social"> Instagram
+    </label>
 
+    <label>
+      <input type="checkbox" value="Vk" v-model="social"> Vk
+    </label>
+
+    <label>
+      <input type="checkbox" value="Facebook" v-model="social"> Facebook
+    </label>
+    <hr>
+    <ul>
+  <li :key="s" v-for="s in social">{{s}}</li>
+  </ul>
+<hr>
+<label>
+      <input type="radio" value="Instagram" v-model="socialRadio"> Instagram
+    </label>
+
+    <label>
+      <input type="radio" value="Vk" v-model="socialRadio"> Vk
+    </label>
+    <label>
+      <input type="radio" value="Facebook" v-model="socialRadio"> Facebook
+    </label>
+  <p>Social-network: {{socialRadio}}</p>
+  <hr>
+<select v-model="socialSelect">
+<option :key="s"
+v-for="s in socialsList">{{s}}</option>
+</select>
+<p>Social-network: {{socialSelect}}</p>
+<hr>
+<input type="text" v-model.number="age">
+<p>{{age}}</p>
+<app-onoff v-model="switched"></app-onoff>
+<div>
+  <h3 v-if="switched">Component is enabled</h3>
+  <h3 v-else>Component is disabled</h3>
+</div>
+
+  </div>
 </template>
 
 <script>
@@ -63,6 +104,12 @@ import ListMixin from './listMixin.js';
 export default {
   data() {
     return {
+      switched: false,
+      age: 20,
+      socialsList: ['instagram', 'vk', 'facebook'],
+      socialSelect: 'facebook',
+      social: ['Vk'],
+      socialRadio: 'Vk',
       textarea: 'I am initial text',
       nameA: 'klara',
       carName: 'BMW bmw',
@@ -108,6 +155,12 @@ export default {
       this.carName = 'Audi';
     },
   },
+  watch: {
+    age (value) {
+      console.log(value);
+      console.log(typeof value);
+    }
+  }
 };
 // var vue = new Vue({
 //   el: "#app",

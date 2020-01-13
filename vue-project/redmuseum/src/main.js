@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import List from './List.vue';
+import Onoff from './Onoff.vue';
 
 // регистрация новой директивы
 import ColorDirective from './color.js';
@@ -18,6 +19,7 @@ Vue.filter('uppercase', value => value.toUpperCase());
 // не пересекались с названиями тегов html5
 // import Car from './Car.vue';
 Vue.component('app-list', List);
+Vue.component('app-onoff', Onoff);
 //регистрация глобального миксина
 Vue.mixin ({
   beforeCreate(){
