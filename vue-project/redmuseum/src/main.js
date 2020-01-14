@@ -1,11 +1,13 @@
 import Vue from 'vue';
+import Vuelidate from 'vuelidate';
+
 import App from './App.vue';
 import List from './List.vue';
 import Onoff from './Onoff.vue';
-
 // регистрация новой директивы
 import ColorDirective from './color.js';
 
+Vue.use(Vuelidate);
 // создание шины событий для связи их во всех омпонентах
 // в данном классе мы получаем доступ к событиям emit и on
 // константы определяются в начале приложения

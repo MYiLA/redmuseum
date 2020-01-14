@@ -2,10 +2,30 @@
   <!-- // чтобы запустить приложение на сервере нужно прописать
 // npm run dev -->
 
+
   <div id="app">
+    <div class="form-group">
+      <form>
+        <label for="email">Email</label>
+        <input
+        type="email"
+        class="form-control"
+        id="email"
+        @blur="$v.email.$touch()"
+        v-model="email"
+        >
+        <p>{{email}}</p>
+      </form>
+    </div>
+    <pre>
+      <h2>$v.email = </h2> {{$v.email}}
+    </pre>
+    <hr>
     <!-- <my-counter></my-counter> -->
     <!-- $event = получить параметр -->
     <h1 v-colored:background="'red'" v-if="visible">Parent: {{carName}}</h1>
+
+
     <!-- можно добавлять сразу несколько модификаторов в директиве (.font.delay) -->
     <h2 v-colored:color.font.delay="'green'" v-if="visible">Parent: {{carName}}</h2>
     <h2 v-font-directive>local font directives</h2>
@@ -95,6 +115,8 @@ v-for="s in socialsList">{{s}}</option>
 </template>
 
 <script>
+// адрес инструментов валидации брать из тех-документации vuelidate
+import {required, email} from 'vuelidate/lib/validators';
 // Регистрация компонента локально
 import Car from './Car.vue';
 import Counter from './Counter.vue';
@@ -104,6 +126,7 @@ import ListMixin from './listMixin.js';
 export default {
   data() {
     return {
+      email: 'Ваш Е-мейл',
       switched: false,
       age: 20,
       socialsList: ['instagram', 'vk', 'facebook'],
@@ -118,6 +141,12 @@ export default {
       counter2: 0,
       visible: true,
     };
+  },
+  validations: {
+email: {
+required, // то же самое что required: required,
+email,
+}
   },
   //миксин вью: импортируется в начале файла и прописывается в объекте mixins
   mixins: [ListMixin],
