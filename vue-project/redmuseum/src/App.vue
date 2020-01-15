@@ -10,15 +10,52 @@
         <input
         type="email"
         class="form-control"
+        :class="{'is-invalid': $v.email.$error}"
         id="email"
         @blur="$v.email.$touch()"
         v-model="email"
         >
-        <p>{{email}}</p>
+        <div  class="invalid-feedback" v-if="!$v.email.required">Email field is required</div>
+        <div class="invalid-feedback" v-if="!$v.email.email">Please provide a valid email.</div>
+        <!-- <p>{{email}}</p> -->
+      </form>
+    </div>
+    <div class="form-group">
+      <form>
+        <label for="password">Password</label>
+        <input
+        type="password"
+        class="form-control"
+        :class="{'is-invalid': $v.password.$error}"
+        id="password"
+        @blur="$v.password.$touch()"
+        v-model="password"
+        >
+        <div  class="invalid-feedback" v-if="!$v.password.minLength">
+          Min length of password is {{$v.password.$params.minLength.min}} simbols. Now it is {{password.length}}
+          </div>
+        <!-- <p>{{email}}</p> -->
+      </form>
+    </div>
+     <div class="form-group">
+      <form>
+        <label for="confirm">Password</label>
+        <input
+        type="password"
+        class="form-control"
+        :class="{'is-invalid': $v.confirmPassword.$error}"
+        id="confirm"
+        @blur="$v.confirmPassword.$touch()"
+        v-model="confirmPassword"
+        >
+        <div class="invalid-feedback" v-if="!$v.confirmPassword.sameAs">
+         Password should match
+          </div>
+        <!-- <p>{{email}}</p> -->
       </form>
     </div>
     <pre>
-      <h2>$v.email = </h2> {{$v.email}}
+      <h2> Блок $v.email = </h2> {{$v.email}}
     </pre>
     <hr>
     <!-- <my-counter></my-counter> -->
@@ -116,7 +153,7 @@ v-for="s in socialsList">{{s}}</option>
 
 <script>
 // адрес инструментов валидации брать из тех-документации vuelidate
-import {required, email} from 'vuelidate/lib/validators';
+import {required, email, minLength, sameAs} from 'vuelidate/lib/validators';
 // Регистрация компонента локально
 import Car from './Car.vue';
 import Counter from './Counter.vue';
@@ -126,7 +163,9 @@ import ListMixin from './listMixin.js';
 export default {
   data() {
     return {
-      email: 'Ваш Е-мейл',
+      password: '',
+      email: '',
+      confirmPassword: '',
       switched: false,
       age: 20,
       socialsList: ['instagram', 'vk', 'facebook'],
@@ -146,6 +185,15 @@ export default {
 email: {
 required, // то же самое что required: required,
 email,
+},
+password: {
+minLength: minLength(6),
+},
+confirmPassword: {
+  // sameAs: sameAs('password'),
+  sameAs: sameAs((vue) => {
+    return vue.password
+  })
 }
   },
   //миксин вью: импортируется в начале файла и прописывается в объекте mixins
@@ -312,12 +360,21 @@ p {
   color: red;
 }
 
+.invalid-feedback {
+  display: block;
+  color: red;
+}
+
 .blue {
   background-color: blue;
 }
 
 .green {
   background-color: green;
+}
+
+.is-invalid {
+  border-color: red;
 }
 
 </style>
